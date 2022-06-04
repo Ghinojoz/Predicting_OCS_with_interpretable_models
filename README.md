@@ -36,5 +36,13 @@ These site abbreviations correspond to the OCS observation sites measured by NOA
 ## OCS DCRNN (directory)
 This folder contains the code for training and executing DCRNN. Inside several scripts can be found:
 
-## DCRNN_generate_data_and_matrix.ipynb
-Produces the pandas array which 
+### DCRNN_generate_data_and_matrix.ipynb
+Produces the train, test, and validation sets for DCRNN, these are in the shape of (number_of_samples, time_series_length, number_of_ocs_sites, number_of_features)
+
+In addition, this script produces the adjacency matrix used by DCRNN. This matrix is a 14x14 fully connected, weighted matrix representing the connections between each OCS site. The weight is a correlation weighted Haversine weight.
+
+### run_dcrnn.ipynb
+Trains DCRNN and saves the model. Hyperparameters can be configured in the ./OCS DCRNN/data/model/dcrnn_ocs.yaml file. 
+
+### examine_dcrnn.ipyng
+A work in progress used to examine the performance of DCRNN at each specific site. Eventually this will produce learned filter visualizations, but as of 6/3/2022 it only prints the RMSE, MAE, and MAPE metrics for each site.
